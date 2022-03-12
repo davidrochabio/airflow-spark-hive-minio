@@ -39,7 +39,7 @@ schemaOrders = StructType([
 # In[4]:
 
 
-orders = load_csv('C:\\Users\\MASTER\\Documents\\Projects\\eCommerce\\olist_orders_dataset.csv', schemaOrders)
+orders = load_csv('olist_orders_dataset.csv', schemaOrders)
 
 
 # In[5]:
