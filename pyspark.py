@@ -35,7 +35,7 @@ schemaItems = StructType([
     StructField("freight_value", DoubleType(), True)   
 ])
 
-items = load_csv('C:\\Users\\MASTER\\Documents\\Projects\\eCommerce\\olist_order_items_dataset.csv', schemaItems)
+items = load_csv('PATH_TO_FILE/olist_order_items_dataset.csv', schemaItems)
 
 items.show(truncate=False)
 
