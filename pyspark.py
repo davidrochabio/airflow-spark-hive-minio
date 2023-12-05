@@ -23,7 +23,7 @@ schemaOrders = StructType([
     StructField("order_estimated_delivery_date", DateType(), True)   
 ])
 
-orders = load_csv('olist_orders_dataset.csv', schemaOrders)
+orders = load_csv('PATH_TO_FILE/olist_orders_dataset.csv', schemaOrders)
 
 schemaItems = StructType([
     StructField("order_id", StringType(), True), \
@@ -48,7 +48,7 @@ schemaSeller = StructType([
     StructField("seller__state", StringType(), True)
 ])
 
-seller = load_csv('C:\\Users\\MASTER\\Documents\\Projects\\eCommerce\\olist_sellers_dataset.csv', schemaSeller)
+seller = load_csv('PATH_TO_FILE/olist_sellers_dataset.csv', schemaSeller)
 
 joined2 = joined1.join(seller, 'seller_id', 'left')
 
