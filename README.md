@@ -1,4 +1,5 @@
-## PySpark data pipeline. Dev Environment with Docker Compose, Airflow, Spark, MinIO, Hive and Jupyter Lab-Notebooks. Delta Lake support.
+# PySpark Data Pipeline 
+## Dev Environment with Docker Compose, Airflow, Spark, MinIO, Hive and Jupyter Lab-Notebooks. Delta Lake support.
 
 - Airflow: https://airflow.apache.org/
 - Spark: https://spark.apache.org/
@@ -25,15 +26,16 @@
 - In Airflow UI go to DAGs tab, click on the olist_pipeline Dag and run it (top right corner).
 
 #### Pipeline 
-    - Ingest task - Ingest csv files and save them as delta tables.
-    - Conform task - Enforce table schemas and clean data. Perform data quality tests and verification
-    - Transform - Create fact and dimension tables. Save files in delta format and create spark external tables in the metastore.
+- Ingest task: Ingest csv files and save them as delta tables in bronze layer.
+- Conform task: - Enforce table schemas and clean data. Perform data quality tests and verification.
+- Transform: - Create fact and dimension tables. Save files in delta format and create spark external tables in the metastore.
 
   
 Other resources:
 - localhost:4040 - Spark UI. Check your Spark Master, worker(s) and applications.
 - localhost:8888 - Jupyter Lab. Get your lab token from "jupyter" container logs. With provided SparkSession config you're able to interact with your Spark cluster and Hive metastore (DBs, tables, views, etc). 
 - Deltalake layers/tables and Hive metastore/warehouse are persisted inside ./include/data
+- Airflow DB and Metastore DB are persisted in docker volumes. Check docker-compose file.
 
 - You can also use other datasets and change dags/scripts to create your own pipeline. Enjoy.
 
