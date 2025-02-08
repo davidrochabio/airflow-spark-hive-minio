@@ -39,5 +39,5 @@ Other resources:
 
 - You can also use other datasets and change dags/scripts to create your own pipeline. Enjoy.
 
-##### Docker compose/files are based on the original docker images from respective tool, except for spark's that's based on bitnami's image, and may contain alterations to work in this context.
+##### Docker compose/files are based on the original docker images from respective tool, except for spark's that's based on bitnami's image, and contain customizations to work in this context.
 ##### Please visit official pages for standard implementations.
