@@ -25,7 +25,7 @@
 
 - In Airflow UI go to DAGs tab, click on the olist_pipeline Dag and run it (top right corner).
 
-#### Pipeline 
+#### Pipeline (inside scripts folder)
 - Ingest task: Ingest csv files and save them as delta tables in bronze layer.
 - Conform task: - Enforce table schemas and clean data. Perform data quality tests and verification.
 - Transform: - Create fact and dimension tables. Save files in delta format and create spark external tables in the metastore.
