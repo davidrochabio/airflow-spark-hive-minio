@@ -16,10 +16,10 @@
     - https://www.kaggle.com/datasets/npscul/olist-datasets or
 - Inside repo folder run "docker compose up".
 - Go to localhost:8080 (Aiflow UI) and enter credentials (user: airflow / password: airflow). Go to Admin tab, connections and add a new connection:
-    Connection Id: spark_conn
-    Connection Type: Spark
-    Host: spark://spark-master
-    Port: 7077
+    - Connection Id: spark_conn
+    - Connection Type: Spark
+    - Host: spark://spark-master
+    - Port: 7077
 
     -> Save
 
