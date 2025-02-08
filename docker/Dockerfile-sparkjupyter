@@ -1,0 +1,18 @@
+FROM bitnami/spark:3.5.4
+
+ENV SPARK_MASTER="spark://spark-master:7077"
+
+USER root
+
+WORKDIR /usr/local/include
+
+# install additional libs and give permission to user 1001 to write to include folder
+COPY sparkjupyter-requirements.txt .
+RUN pip install -r sparkjupyter-requirements.txt && \
+    chown -R 1001:1001 /usr/local/include
+
+USER 1001
+
+EXPOSE 8888
+
+CMD ["bash", "-c", "jupyter lab --allow-root --no-browser --ip=0.0.0.0 --port=8888"]

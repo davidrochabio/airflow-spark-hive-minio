@@ -1,0 +1,11 @@
+async-generator
+certifi
+certipy
+ipython-genutils
+llvmlite
+munkres
+py4j
+pyarrow
+zstandard
+jupyterlab
+pandas
