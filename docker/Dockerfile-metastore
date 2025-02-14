@@ -2,14 +2,14 @@ FROM apache/hive:3.1.3
 
 USER root
 
-# new entrypoint for hive that allows dynamic schema initialization logic
+# New entrypoint for hive that allows dynamic schema initialization logic
 COPY ./metastore_entrypoint.sh /metastore_entrypoint.sh
 
-# hive config to work with MinIO
+# Hive config to work with MinIO
 COPY ./hive-site.xml /opt/hive/conf/hive-site.xml
 COPY ./core-site.xml /opt/hive/conf/core-site.xml
 
-# download and add the PostgreSQL JDBC driver
+# Download and add the PostgreSQL JDBC driver
 RUN apt update && \
     apt-get update && \
     apt-get install -y curl && \
