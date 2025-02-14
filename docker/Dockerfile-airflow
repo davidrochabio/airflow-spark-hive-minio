@@ -2,15 +2,29 @@ FROM apache/airflow:2.10.4
 
 USER root
 
-RUN apt-get update \
-  && apt-get install -y --no-install-recommends \
-         openjdk-17-jre-headless \
-  && apt-get autoremove -yqq --purge \
-  && apt-get clean \
-  && rm -rf /var/lib/apt/lists/*
+# Detect architecture and install the correct OpenJDK version
+RUN ARCH=$(dpkg --print-architecture) && \
+    if [ "$ARCH" = "amd64" ]; then \
+        apt-get update && apt-get install -y --no-install-recommends openjdk-17-jre-headless; \
+        export JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64; \
+    elif [ "$ARCH" = "arm64" ]; then \
+        apt-get update && apt-get install -y --no-install-recommends openjdk-17-jre-headless; \
+        export JAVA_HOME=/usr/lib/jvm/java-17-openjdk; \
+    else \
+        echo "Unsupported architecture: $ARCH" && exit 1; \
+    fi && \
+    apt-get autoremove -yqq --purge && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
+
+# Set JAVA_HOME dynamically
+ENV JAVA_HOME=$JAVA_HOME
+
+# Ensure JAVA_HOME is recognized globally
+RUN echo "export JAVA_HOME=$JAVA_HOME" >> /etc/profile
 
 USER airflow
 
-ENV JAVA_HOME=/usr/lib/jvm/java-17-openjdk-amd64
-
-RUN export JAVA_HOME && pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" apache-airflow-providers-apache-spark==5.0.0
+# Install Spark privider
+RUN pip install --no-cache-dir "apache-airflow==${AIRFLOW_VERSION}" \
+    apache-airflow-providers-apache-spark==5.0.0
