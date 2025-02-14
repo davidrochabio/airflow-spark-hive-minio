@@ -10,7 +10,7 @@
 ### Steps
 
 - Clone repo and enter repo folder.
-- Download OList Dataset from Kaggle (all tables) and put inside the "data" folder: 
+- Download OList Dataset from Kaggle (all tables), unzip CSVs, and put inside the "data" folder: 
     - https://www.kaggle.com/datasets/olistbr/brazilian-ecommerce or
     - https://www.kaggle.com/datasets/erak1006/brazilian-e-commerce-company-olist or
     - https://www.kaggle.com/datasets/npscul/olist-datasets or
